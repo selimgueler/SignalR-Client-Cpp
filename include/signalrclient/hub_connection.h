@@ -25,6 +25,7 @@ namespace signalr
     public:
         typedef std::function<void __cdecl (const signalr::value&)> method_invoked_handler;
 
+		SIGNALRCLIENT_API hub_connection();
         SIGNALRCLIENT_API ~hub_connection();
 
         hub_connection(const hub_connection&) = delete;

@@ -28,7 +28,12 @@ namespace signalr
         return *this;
     }
 
-    // Do NOT remove this destructor. Letting the compiler generate and inline the default dtor may lead to
+	hub_connection::hub_connection()
+	{
+		m_pImpl = nullptr;
+	}
+
+	// Do NOT remove this destructor. Letting the compiler generate and inline the default dtor may lead to
     // undefined behavior since we are using an incomplete type. More details here:  http://herbsutter.com/gotw/_100/
     hub_connection::~hub_connection() = default;
 
