@@ -1,4 +1,4 @@
-﻿{
+{
   "configurations": [
     {
       "name": "x64-Debug",
@@ -25,6 +25,10 @@
       "cmakeToolchain": "${projectDir}\\submodules\\vcpkg\\scripts\\buildsystems\\vcpkg.cmake",
       "inheritEnvironments": [ "msvc_x64_x64" ],
       "variables": []
+    },
+    {
+      "name": "signalrclient",
+      "cacheRoot": "D:\\Source\\signalr-master\\SignalR-Client-Cpp\\out\\build\\x64-Release"
     }
   ]
 }
