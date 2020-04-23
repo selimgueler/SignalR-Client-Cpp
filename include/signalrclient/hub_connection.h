@@ -25,7 +25,6 @@ namespace signalr
     public:
         typedef std::function<void __cdecl (const signalr::value&)> method_invoked_handler;
 
-		SIGNALRCLIENT_API hub_connection();
         SIGNALRCLIENT_API ~hub_connection();
 
         hub_connection(const hub_connection&) = delete;
@@ -45,8 +44,6 @@ namespace signalr
         SIGNALRCLIENT_API void __cdecl set_disconnected(const std::function<void __cdecl()>& disconnected_callback);
 
         SIGNALRCLIENT_API void __cdecl set_client_config(const signalr_client_config& config);
-
-        SIGNALRCLIENT_API signalr_client_config __cdecl get_client_config();
 
         SIGNALRCLIENT_API void __cdecl on(const std::string& event_name, const method_invoked_handler& handler);
 
