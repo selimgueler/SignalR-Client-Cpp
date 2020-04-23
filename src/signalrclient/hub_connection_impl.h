@@ -45,6 +45,8 @@ namespace signalr
         void set_client_config(const signalr_client_config& config);
         void set_disconnected(const std::function<void()>& disconnected);
 
+        signalr_client_config get_signalr_client_config();
+
     private:
         hub_connection_impl(const std::string& url, trace_level trace_level,
             const std::shared_ptr<log_writer>& log_writer, std::shared_ptr<http_client> http_client,

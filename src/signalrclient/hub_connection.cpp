@@ -128,4 +128,14 @@ namespace signalr
 
         m_pImpl->set_client_config(config);
     }
+
+    signalr_client_config hub_connection::get_client_config()
+    {
+        if (!m_pImpl)
+        {
+            throw signalr_exception("get_client_config() cannot be called on destructed hub_connection instance");
+        }
+
+        return m_pImpl->get_signalr_client_config();
+    }
 }

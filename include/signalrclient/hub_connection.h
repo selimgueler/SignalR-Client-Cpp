@@ -46,6 +46,8 @@ namespace signalr
 
         SIGNALRCLIENT_API void __cdecl set_client_config(const signalr_client_config& config);
 
+        SIGNALRCLIENT_API signalr_client_config __cdecl get_client_config();
+
         SIGNALRCLIENT_API void __cdecl on(const std::string& event_name, const method_invoked_handler& handler);
 
         SIGNALRCLIENT_API void invoke(const std::string& method_name, const signalr::value& arguments = signalr::value(), std::function<void(const signalr::value&, std::exception_ptr)> callback = [](const signalr::value&, std::exception_ptr) {}) noexcept;

@@ -445,6 +445,11 @@ namespace signalr
         m_disconnected = disconnected;
     }
 
+    signalr_client_config hub_connection_impl::get_signalr_client_config()
+    {
+        return m_signalr_client_config;
+    }
+
     // unnamed namespace makes it invisble outside this translation unit
     namespace
     {
