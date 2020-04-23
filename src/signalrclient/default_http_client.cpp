@@ -41,7 +41,6 @@ namespace signalr
             {
                 headers.add(utility::conversions::to_string_t(header.first), utility::conversions::to_string_t(header.second));
             }
-			headers.add("Ebesinin ami", "Ebesinin aminin degeri");
             http_request.headers() = headers;
         }
 
