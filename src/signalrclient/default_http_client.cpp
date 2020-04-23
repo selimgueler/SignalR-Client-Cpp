@@ -41,6 +41,7 @@ namespace signalr
             {
                 headers.add(utility::conversions::to_string_t(header.first), utility::conversions::to_string_t(header.second));
             }
+	
             http_request.headers() = headers;
         }
 

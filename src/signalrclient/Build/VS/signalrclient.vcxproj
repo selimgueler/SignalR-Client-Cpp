@@ -12,7 +12,7 @@
     <OutDir>$(OutDir)lib\</OutDir>
     <IntDir>$(Configuration)\lib\</IntDir>
     <ConfigurationType>StaticLibrary</ConfigurationType>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="..\..\..\..\Build\Config.Definitions.props" />
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -27,6 +27,7 @@
   </PropertyGroup>
   <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <PlatformToolset>v141</PlatformToolset>
+    <UseOfMfc>Static</UseOfMfc>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
@@ -34,7 +35,7 @@
   <ItemDefinitionGroup>
     <ClCompile>
       <PreprocessorDefinitions>_WINDOWS;_USRDLL;NO_SIGNALRCLIENT_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>..\..\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>D:\Source\signalr-master\SignalR-Client-Cpp\third_party_code\cpprestsdk;D:\Source\signalr-master\SignalR-Client-Cpp\third_party_code\jsoncpp;D:\Source\signalr-master\SignalR-Client-Cpp\third_party_code;..\..\..\..\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
     </ClCompile>
   </ItemDefinitionGroup>
@@ -43,6 +44,7 @@
     <ClInclude Include="..\..\..\..\include\signalrclient\connection_state.h" />
     <ClInclude Include="..\..\..\..\include\signalrclient\http_client.h" />
     <ClInclude Include="..\..\..\..\include\signalrclient\hub_connection.h" />
+    <ClInclude Include="..\..\..\..\include\signalrclient\hub_connection_builder.h" />
     <ClInclude Include="..\..\..\..\include\signalrclient\hub_exception.h" />
     <ClInclude Include="..\..\..\..\include\signalrclient\log_writer.h" />
     <ClInclude Include="..\..\..\..\include\signalrclient\signalr_client_config.h" />
@@ -79,8 +81,8 @@
     <ClCompile Include="..\..\connection.cpp" />
     <ClCompile Include="..\..\connection_impl.cpp" />
     <ClCompile Include="..\..\default_http_client.cpp" />
-    <ClCompile Include="..\..\http_sender.cpp" />
     <ClCompile Include="..\..\hub_connection.cpp" />
+    <ClCompile Include="..\..\hub_connection_builder.cpp" />
     <ClCompile Include="..\..\hub_connection_impl.cpp" />
     <ClCompile Include="..\..\callback_manager.cpp" />
     <ClCompile Include="..\..\logger.cpp" />
@@ -95,8 +97,6 @@
     <ClCompile Include="..\..\url_builder.cpp" />
     <ClCompile Include="..\..\default_websocket_client.cpp" />
     <ClCompile Include="..\..\websocket_transport.cpp" />
-    <ClCompile Include="..\..\web_request.cpp" />
-    <ClCompile Include="..\..\web_request_factory.cpp" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="cpprestsdk" Version="2.9.1.1" />
