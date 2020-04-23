@@ -28,7 +28,12 @@ namespace signalr
         return *this;
     }
 
-    // Do NOT remove this destructor. Letting the compiler generate and inline the default dtor may lead to
+	hub_connection::hub_connection()
+	{
+		m_pImpl = nullptr;
+	}
+
+	// Do NOT remove this destructor. Letting the compiler generate and inline the default dtor may lead to
     // undefined behavior since we are using an incomplete type. More details here:  http://herbsutter.com/gotw/_100/
     hub_connection::~hub_connection() = default;
 
@@ -122,5 +127,15 @@ namespace signalr
         }
 
         m_pImpl->set_client_config(config);
+    }
+
+    signalr_client_config hub_connection::get_client_config()
+    {
+        if (!m_pImpl)
+        {
+            throw signalr_exception("get_client_config() cannot be called on destructed hub_connection instance");
+        }
+
+        return m_pImpl->get_signalr_client_config();
     }
 }
