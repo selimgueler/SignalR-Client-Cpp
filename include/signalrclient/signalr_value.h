@@ -20,7 +20,8 @@ namespace signalr
         string,
         float64,
         null,
-        boolean
+        boolean,
+        byte
     };
 
     /**
@@ -83,6 +84,11 @@ namespace signalr
          * Create an object representing a value_type::map with the given map of string-value's.
          */
         value(std::map<std::string, value>&& map);
+        
+        /*
+        * Create an object representing a value_type:byte with the given byte value. (Selim Güler)
+        */
+        value(const std::byte& val);
 
         /**
          * Copies an existing value.
@@ -139,6 +145,12 @@ namespace signalr
          */
         bool is_bool() const;
 
+        /*
+         * True if the object stored is a byte. (Selim Güler)
+        */
+        bool is_byte() const;
+
+
         /**
          * Returns the stored object as a double. This will throw if the underlying object is not a signalr::type::float64.
          */
@@ -164,6 +176,11 @@ namespace signalr
          */
         const std::map<std::string, value>& as_map() const;
 
+        /*
+         * Returns the stored object as a byte. This will throw if the underlying object is not a signalr::type::byte.
+        */
+        const std::byte& as_byte() const;
+
         /**
          * Returns the signalr::type that represents the stored object.
          */
@@ -179,6 +196,7 @@ namespace signalr
             std::vector<value> array;
             double number;
             std::map<std::string, value> map;
+            std::byte byte; //(Selim Güler)
 
             // constructor of types in union are not implicitly called
             // this is expected as we only construct a single type in the union once we know
