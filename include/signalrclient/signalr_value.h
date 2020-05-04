@@ -88,7 +88,7 @@ namespace signalr
         /*
         * Create an object representing a value_type:byte with the given byte value. (Selim Güler)
         */
-        value(const std::byte& val);
+        value(const std::uint8_t& val);
 
         /**
          * Copies an existing value.
@@ -179,7 +179,7 @@ namespace signalr
         /*
          * Returns the stored object as a byte. This will throw if the underlying object is not a signalr::type::byte.
         */
-        const std::byte& as_byte() const;
+        const std::uint8_t& as_byte() const;
 
         /**
          * Returns the signalr::type that represents the stored object.
@@ -196,7 +196,7 @@ namespace signalr
             std::vector<value> array;
             double number;
             std::map<std::string, value> map;
-            std::byte byte; //(Selim Güler)
+            std::uint8_t byte; //(Selim Güler)
 
             // constructor of types in union are not implicitly called
             // this is expected as we only construct a single type in the union once we know

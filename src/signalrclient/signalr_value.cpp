@@ -7,8 +7,11 @@
 #include "signalrclient/signalr_exception.h"
 #include <string>
 
+
+
 namespace signalr
 {
+    
     std::string value_type_to_string(value_type v)
     {
         switch (v)
@@ -25,7 +28,7 @@ namespace signalr
             return "null";
         case signalr::value_type::boolean:
             return "boolean";
-        case signalr::value_type::byte: //(Selim Güler)
+        case signalr::value_type::byte:
             return "byte";
         default:
             return std::to_string((int)v);
@@ -54,7 +57,8 @@ namespace signalr
             new (&mStorage.map) std::map<std::string, value>();
             break;
         case value_type::byte:
-            mStorage.byte = std::byte{0}; //(Selim Güler)
+            new (&mStorage.byte) std::uint8_t(); //(Selim Güler)
+            break;
         case value_type::null:
         default:
             break;
@@ -106,9 +110,9 @@ namespace signalr
         new (&mStorage.map) std::map<std::string, value>(std::move(map));
     }
 
-    value::value(const std::byte& val) : mType(value_type::byte)
+    value::value(const std::uint8_t& val) : mType(value_type::byte)
     {
-        new (&mStorage.byte) std::byte(val);  // (Selim Güler)
+        new (&mStorage.byte) std::uint8_t(val);  // (Selim Güler)
     }
 
 
@@ -133,7 +137,7 @@ namespace signalr
             new (&mStorage.map) std::map<std::string, value>(rhs.mStorage.map);
             break;
         case value_type::byte:              // (Selim Güler)
-            new (&mStorage.byte) std::byte(rhs.mStorage.byte);
+            new (&mStorage.byte) std::uint8_t(rhs.mStorage.byte);
             break;
         case value_type::null:
         default:
@@ -162,7 +166,7 @@ namespace signalr
             new (&mStorage.map) std::map<std::string, signalr::value>(std::move(rhs.mStorage.map));
             break;
         case value_type::byte:              // (Selim Güler)
-            new (&mStorage.byte) std::byte(std::move(rhs.mStorage.byte));
+            new (&mStorage.byte) std::uint8_t(std::move(rhs.mStorage.byte));
             break;
         case value_type::null:
         default:
@@ -188,10 +192,10 @@ namespace signalr
         case value_type::map:
             mStorage.map.~map();
             break;
+        case value_type::byte:
         case value_type::null:
         case value_type::float64:
         case value_type::boolean:
-        case value_type::byte:
         default:
             break;
         }
@@ -220,7 +224,7 @@ namespace signalr
             new (&mStorage.map) std::map<std::string, value>(rhs.mStorage.map);
             break;
          case value_type::byte:              // (Selim Güler)
-            new (&mStorage.byte) std::byte(rhs.mStorage.byte);
+            new (&mStorage.byte) std::uint8_t(rhs.mStorage.byte);
             break;
         case value_type::null:
         default:
@@ -253,7 +257,7 @@ namespace signalr
             new (&mStorage.map) std::map<std::string, value>(std::move(rhs.mStorage.map));
             break;
          case value_type::byte:              // (Selim Güler)
-            new (&mStorage.byte) std::byte(std::move(rhs.mStorage.byte));
+            new (&mStorage.byte) std::uint8_t(std::move(rhs.mStorage.byte));
             break;
         case value_type::null:
         default:
@@ -348,7 +352,7 @@ namespace signalr
         return mStorage.map;
     }
 
-    const std::byte& value::as_byte() const // (Selim Güler)
+    const std::uint8_t& value::as_byte() const // (Selim Güler)
     {
         if (!is_byte())
         {

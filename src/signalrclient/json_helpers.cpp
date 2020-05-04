@@ -21,6 +21,8 @@ namespace signalr
             return signalr::value(v.asDouble());
         case Json::ValueType::stringValue:
             return signalr::value(v.asString());
+        
+            
         case Json::ValueType::arrayValue:
         {
             std::vector<signalr::value> vec;
@@ -39,6 +41,7 @@ namespace signalr
             }
             return signalr::value(std::move(map));
         }
+        
         case Json::ValueType::nullValue:
         default:
             return signalr::value();
@@ -110,10 +113,14 @@ namespace signalr
             }
             return object;
         }
+        case signalr::value_type::byte:
+            return Json::Value(v.as_byte());
+
         case signalr::value_type::null:
         default:
             return Json::Value(Json::ValueType::nullValue);
         }
+
     }
 
     Json::StreamWriterBuilder getJsonWriter()
